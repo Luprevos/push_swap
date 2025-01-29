@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:37:41 by luprevos          #+#    #+#             */
-/*   Updated: 2025/01/11 17:00:05 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:05:53 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,26 @@ void	cost_for_a(t_list *a, t_list *b)
 	
 	while (a)
 	{
+		// printf("a->value = %d\n", a->value);
+		// printf("a->index = %d\n", a->index);
+		// printf("a->push_cost = %d\n", a->push_cost);
+		// printf("a->above_median = %d\n", a->above_median);
+		// printf("a->cheapest = %d\n", a->cheapest);
 		a->push_cost = a->index;
 		if (!(a->above_median))
 			a->push_cost = len_a - (a->index);
+
+		t_list *toPrint = a;
+		while (toPrint != NULL)
+		{
+			printf("%p ===> value: %d, target_node: %p, next: %p, prev: %p\n", &(*toPrint), toPrint->value, &toPrint->target_node, &*toPrint->next, &*toPrint->prev);
+			// si segfault, target_node->above_median n'a jamais ete init
+			// on n'a jamais donne de valeur a target_node->above_median
+			// ==453265==  Address 0xc is not stack'd, malloc'd or (recently) free'd
+			printf("  target_node->above_median: \n", toPrint->target_node->above_median);
+			toPrint = toPrint->next;
+		}
+
 		if (a->target_node->above_median)
 			a->push_cost += a->target_node->index;
 		else

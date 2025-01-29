@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:30:38 by luprevos          #+#    #+#             */
-/*   Updated: 2025/01/20 17:36:13 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:33:46 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ int	main(int ac,char **av)
 	else if (ac == 2)
 		av = ft_split(av[1], ' ');
 	init_stack_a(&stack_a, av + 1);
+	// printf("here");
 	if (!(stack_already_sorted(stack_a)))
 	{
+		// printf("here boucle ");
 		if (stack_len(stack_a) == 2)
 			sa(&stack_a, 0);
 		else if (stack_len(stack_a) == 3)

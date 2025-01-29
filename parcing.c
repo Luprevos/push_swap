@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:51:58 by luprevos          #+#    #+#             */
-/*   Updated: 2024/11/12 15:53:46 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:04:57 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ long     ft_atoi(const char *str)
 						s = -s;
 				i++;
 		}
-		while (ft_isdigit(*str))
+		while (str[i] && ft_isdigit(*str))
 		{
 				nb = nb * 10 + (str[i] - '0');
 				i++;
@@ -56,6 +56,12 @@ void	add_last(t_list	**stack, int n)
 	temp->next = NULL;
 	temp->value = n;
 	temp->cheapest = 0;
+
+	// int				index;
+	// int				push_cost;
+	// temp->above_median = 0;
+	// temp->target_node = NULL;
+
 	if (!(*stack))
 	{
 		*stack = temp;
