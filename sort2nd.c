@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:33:37 by luprevos          #+#    #+#             */
-/*   Updated: 2025/01/20 17:17:05 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:18:49 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void    sort_stacks(t_list **a, t_list **b)
     len_a = stack_len(*a);
     if (len_a-- > 3 && !stack_already_sorted(*a))
         pb (b, a);
-    if (len_a -- > 3 && !stack_already_sorted(*a))
+    if (len_a-- > 3 && !stack_already_sorted(*a))
         pb (b, a);
     while(len_a-- > 3 && !stack_already_sorted(*a))
     {

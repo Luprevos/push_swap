@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:37:41 by luprevos          #+#    #+#             */
-/*   Updated: 2025/01/29 19:05:53 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/03 18:15:40 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,50 @@ void	set_target_a(t_list *stack_a, t_list *stack_b)
 	t_list	*target_node;
 	long	best_match_index;
 	
+	printf("Printing :\n");
+		t_list *toPrint = stack_b;
+		while (toPrint != NULL)
+		{
+			printf("%p ===> value: %d, target_node: %p, next: %p, prev: %p\n", &(*toPrint), toPrint->value, &*toPrint->target_node, &*toPrint->next, &*toPrint->prev);
+			toPrint = toPrint->next;
+		}
+	printf("Done printing\n");
+
+	
 	while(stack_a)
 	{
 		best_match_index = LONG_MIN;
 		current_b = stack_b;
+
+		if (!stack_b)
+		{
+			printf("Here - pas de stack_b\n");
+			stack_a->target_node = NULL;
+			stack_a = stack_a->next;
+			continue ;
+		}
+			
+
 		while (current_b)
 		{
 			if (current_b->value < stack_a->value && current_b->value > best_match_index)
 			{
 				best_match_index = current_b->value;
+				printf("ehre\n");
 				target_node = current_b;
 			}
 			current_b = current_b->next;
 		}
 		if (best_match_index == LONG_MIN)
+		{
 			stack_a->target_node = get_max(stack_b);
+			printf("ehre1\n");
+		}
 		else
+		{
 			stack_a->target_node = target_node;
+			printf("ehre2\n");
+		}
 		stack_a = stack_a->next;
 	}
 }
@@ -82,13 +109,15 @@ void	cost_for_a(t_list *a, t_list *b)
 		t_list *toPrint = a;
 		while (toPrint != NULL)
 		{
-			printf("%p ===> value: %d, target_node: %p, next: %p, prev: %p\n", &(*toPrint), toPrint->value, &toPrint->target_node, &*toPrint->next, &*toPrint->prev);
+			printf("%p ===> value: %d, target_node: %p, next: %p, prev: %p\n", &(*toPrint), toPrint->value, &*toPrint->target_node, &*toPrint->next, &*toPrint->prev);
 			// si segfault, target_node->above_median n'a jamais ete init
 			// on n'a jamais donne de valeur a target_node->above_median
 			// ==453265==  Address 0xc is not stack'd, malloc'd or (recently) free'd
-			printf("  target_node->above_median: \n", toPrint->target_node->above_median);
+			// printf("  target_node->above_median: %d\n", toPrint->target_node->above_median);
 			toPrint = toPrint->next;
 		}
+
+		// pas gere si a->target_node == NULL
 
 		if (a->target_node->above_median)
 			a->push_cost += a->target_node->index;
