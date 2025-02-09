@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:51:58 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/03 17:53:09 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:17:21 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ long     ft_atoi(const char *str)
 		}
 		return (nb * s);
 }
+
 
 int	ft_isdigit(int c)
 {

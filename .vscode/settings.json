@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "pswap.h": "c",
+        "algorithm": "c",
+        "format": "c",
+        "chrono": "c",
+        "variant": "c",
+        "array": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "span": "c",
+        "random": "c"
+    }
+}
