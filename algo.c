@@ -6,32 +6,32 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:37:41 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/06 16:40:36 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:45:37 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void ft_index(t_list *stack)
-{
-	int	i;
-	int	median;
+// void ft_index(t_list *stack)
+// {
+// 	int	i;
+// 	int	median;
 	
-	i = 0;
-	if (!stack)
-		return ;
-	median = stack_len(stack) / 2;
-	while (stack)
-	{
-		stack->index = i;
-		if (i <= median)
-			stack->above_median = true;
-		else
-			stack->above_median = false;
-		stack = stack->next;
-		i++;
-	}
-}
+// 	i = 0;
+// 	if (!stack)
+// 		return ;
+// 	median = stack_len(stack) / 2;
+// 	while (stack)
+// 	{
+// 		stack->index = i;
+// 		if (i <= median)
+// 			stack->above_median = true;
+// 		else
+// 			stack->above_median = false;
+// 		stack = stack->next;
+// 		i++;
+// 	}
+// }
 
 // void	set_target_a(t_list *stack_a, t_list *stack_b)
 // {
@@ -126,10 +126,12 @@ static void	cost_for_a(t_list **a, t_list *b)
 {
 	int len_a;
 	int len_b;
+	int mediane;
 
 	if (!(*a) || !b)
 		return ;
-		
+	
+	mediane = stack_mediane(&a);
 	len_a = stack_len(*a);
 	len_b = stack_len(b);
 
@@ -149,7 +151,7 @@ static void	cost_for_a(t_list **a, t_list *b)
 		// printf("a->above_median = %d\n", a->above_median);
 		// printf("a->cheapest = %d\n", a->cheapest);
 		(*a)->push_cost = (*a)->index;
-		if (!(*a)->above_median)
+		if (!(*a)->value > mediane)
 			(*a)->push_cost = len_a - (*a)->index;
 
 		// t_list *toPrint = a;
@@ -167,7 +169,7 @@ static void	cost_for_a(t_list **a, t_list *b)
 
 		if ((*a)->target_node)
 		{
-			if ((*a)->target_node->above_median)
+			if ((*a)->target_node->value > mediane)
 				(*a)->push_cost += (*a)->target_node->index;
 			else
 				(*a)->push_cost += len_b - ((*a)->target_node->index);

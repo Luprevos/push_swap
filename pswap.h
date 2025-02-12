@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 15:59:59 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/06 16:35:33 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:43:38 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct s_list
 {
 	int				value;
 	int				index;
+	int 			rank;
 	int				push_cost;
-	bool			above_median;
 	bool			cheapest;
 	struct s_list	*target_node;
 	struct s_list	*next;
@@ -88,6 +88,11 @@ char **ft_split(char *s, char c);
 
 void	prep_for_push(t_list **stack, t_list *top, char stack_name);
 t_list	*get_cheapest(t_list *stack);
+
+
+int stack_mediane(t_list *stack);
+void mediane_check(t_list **stack_a, t_list **stack_b);
+void set_rank(t_list **stack_a);
 
 
 

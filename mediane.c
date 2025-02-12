@@ -6,34 +6,76 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 16:12:36 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/09 17:45:46 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:43:25 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-void is_above_mediane(t_list **stack)
+int stack_mediane(t_list *stack)
 {
     int mediane;
     int len;
-    int i = 0;
 
-    if (*stack)
+    mediane = 0;
+    len = 0;
+
+    set_rank(&stack);
+    if (stack)
     {
-        len = stack_len(*stack);
-        if (len % 2 == 0)
-            mediane = len / 2;
-        else
-            mediane = (len / 2) + 1;
-        
-        while (i < len)
+        len = stack_len(stack);
+        while(stack->rank != len / 2)
+            stack = stack->next;
+        mediane = stack->value;
+    }
+    return (mediane);
+}
+
+void mediane_check(t_list **stack_a, t_list **stack_b)
+{
+    t_list *start;
+    int mediane;
+    
+    if(!(*stack_a))
+        return ;
+    start = *stack_a;
+    while(stack_len(*stack_a) > 3)
+    {
+        mediane = stack_mediane(&stack_a);
+        while(*stack_a)
         {
-            if ((*stack)->value > mediane)
-                (*stack)->above_median = true;
+            if ((*stack_a)->value < mediane)
+                pb(stack_a, stack_b);
             else
-                (*stack)->above_median = false;
-            i++;
-            (*stack) = (*stack)->next;
+                *stack_a = (*stack_a)->next;
         }
+        *stack_a = start;
     }
 }
+
+void set_rank(t_list **stack_a)
+{
+    t_list *stack_a_copy;
+    t_list *start;
+    int rank;
+
+    stack_a_copy = *stack_a;
+    start = stack_a_copy;
+    while(*stack_a)
+    {
+        rank = 0;
+        while(stack_a_copy)
+        {
+            if((*stack_a)->value > stack_a_copy->value &&
+             (*stack_a)->index != stack_a_copy->index)
+            {
+                rank++;
+            }
+            stack_a_copy = stack_a_copy->next;
+        }
+        (*stack_a)->rank = rank;
+        stack_a_copy = start;
+        (*stack_a) = (*stack_a)->next;
+    }
+}
+

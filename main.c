@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:30:38 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/06 16:23:37 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:49:44 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	main(int ac,char **av)
 		else if (stack_len(stack_a) == 3)
 			sort_stack_3E(&stack_a);
 		else
+		{
+			//push_b(&stack_a, &stack_b);
 			sort_stacks(&stack_a, &stack_b);
+		}
 	}
     free_stack(&stack_a);
     return (0);
