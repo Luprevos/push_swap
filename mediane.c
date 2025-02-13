@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 16:12:36 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/12 18:43:25 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:44:49 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void mediane_check(t_list **stack_a, t_list **stack_b)
     start = *stack_a;
     while(stack_len(*stack_a) > 3)
     {
-        mediane = stack_mediane(&stack_a);
+        mediane = stack_mediane(*stack_a);
         while(*stack_a)
         {
             if ((*stack_a)->value < mediane)

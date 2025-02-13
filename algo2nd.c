@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:31:47 by luprevos          #+#    #+#             */
-/*   Updated: 2025/01/20 14:55:56 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:41:38 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void    set_target_b(t_list *a, t_list *b)
 
 void    init_nodes_b(t_list *a, t_list *b)
 {
-    ft_index(a);
-	ft_index(b);
+    stack_mediane(a);
+	stack_mediane(b);
     set_target_b (a, b);
 }
 

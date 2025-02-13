@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:33:37 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/12 18:47:21 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:45:16 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    move_a_to_b(t_list **a, t_list **b)
     t_list *cheapest_node;
     int mediane;
 
-    mediane = stack_mediane(&a);
+    mediane = stack_mediane(*a);
 
     cheapest_node = get_cheapest(*a);
     if (cheapest_node->value > mediane && cheapest_node->target_node->value > mediane)
@@ -55,6 +55,6 @@ void    sort_stacks(t_list **stack_a, t_list **stack_b)
         init_nodes_b(*stack_a, *stack_b);
         move_b_to_a(stack_a, stack_b);
     }
-    ft_index(*stack_a);
+    stack_mediane(*stack_a);
     min_go_top(stack_a);
 }

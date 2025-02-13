@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:37:41 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/12 18:45:37 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:44:27 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ static void	cost_for_a(t_list **a, t_list *b)
 	if (!(*a) || !b)
 		return ;
 	
-	mediane = stack_mediane(&a);
+	mediane = stack_mediane(*a);
 	len_a = stack_len(*a);
 	len_b = stack_len(b);
 
@@ -151,7 +151,7 @@ static void	cost_for_a(t_list **a, t_list *b)
 		// printf("a->above_median = %d\n", a->above_median);
 		// printf("a->cheapest = %d\n", a->cheapest);
 		(*a)->push_cost = (*a)->index;
-		if (!(*a)->value > mediane)
+		if (!((*a)->value > mediane))
 			(*a)->push_cost = len_a - (*a)->index;
 
 		// t_list *toPrint = a;
@@ -204,8 +204,8 @@ void	set_cheapest(t_list *stack)
 
 void	init_nodes_a(t_list *a, t_list *b)
 {
-	ft_index(a);
-	ft_index(b);
+	stack_mediane(a);
+	stack_mediane(b);
 	set_target_a(a, b);
 	cost_for_a(&a, b);
 	set_cheapest(a);

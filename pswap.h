@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 15:59:59 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/12 18:43:38 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:33:34 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int check_double(t_list *a, int n);
 void    free_stack(t_list **stack);
 void    free_errors(t_list **stack);
 
-void	ft_index(t_list *stack_a);
+//void	ft_index(t_list *stack_a);
 //void set_target_a(t_list *stack_a, t_list *stack_b);
 static void 	set_target_a(t_list *a, t_list *b);
 static void	cost_for_a(t_list **a, t_list *b);

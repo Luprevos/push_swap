@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 18:37:43 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/12 18:47:59 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:45:36 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,23 @@ void	rotate_both(t_list **stack_a, t_list **stack_b, t_list *min)
 {
 	while (*stack_b != min->target_node && *stack_a != min)
 		rr(stack_a, stack_b);
-	ft_index(*stack_a);
-	ft_index(*stack_b);
+	stack_mediane(*stack_a);
+	stack_mediane(*stack_b);
 }
 
 void	rev_rotate_both(t_list **stack_a, t_list **stack_b, t_list *min)
 {
 	while (*stack_b != min->target_node && *stack_a != min)
 		rrr(stack_a, stack_b);
-	ft_index(*stack_a);
-	ft_index(*stack_b);
+	stack_mediane(*stack_a);
+	stack_mediane(*stack_b);
 }
 
 void	min_go_top(t_list **stack_a)
 {
 	int mediane;
 	
-	mediane = stack_mediane(&stack_a);
+	mediane = stack_mediane(*stack_a);
 	while ((*stack_a)->value != get_min(*stack_a)->value)
 	{
 		if (get_min(*stack_a)->value > mediane)
