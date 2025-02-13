@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:37:41 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/13 15:44:27 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:40:55 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@
 // 	}
 // }
 
-static void set_target_a(t_list *a, t_list *b)
+void set_target_a(t_list *a, t_list *b)
 {
 	t_list *current_b;
 	t_list *target_node;
@@ -122,42 +122,40 @@ static void set_target_a(t_list *a, t_list *b)
 	}
 }
 
-static void	cost_for_a(t_list **a, t_list *b)
+void	cost_for_a(t_list *a, t_list *b)
 {
 	int len_a;
 	int len_b;
 	int mediane;
 
-	if (!(*a) || !b)
-		return ;
 	
-	mediane = stack_mediane(*a);
-	len_a = stack_len(*a);
+	mediane = stack_mediane(a);
+	len_a = stack_len(a);
 	len_b = stack_len(b);
 
 	
-	while (*a)
+	while (a)
 	{
-		if (!(*a)->target_node)
+		if (!(a)->target_node)
 		{
-			printf("erreur targetnode est NULL");
-			printf("push_cost 1: %d\n", (*a)->push_cost);
-			*a = (*a)->next;
+			a = (a)->next;
+			//printf("JE TOURNE/n");
 			continue;
 		}
 		// printf("a->value = %d\n", a->value);
 		// printf("a->index = %d\n", a->index);
-		// printf("a->push_cost = %d\n", a->push_cost);
+		// printf("a-write>push_cost = %d\n", a->push_cost);
 		// printf("a->above_median = %d\n", a->above_median);
 		// printf("a->cheapest = %d\n", a->cheapest);
-		(*a)->push_cost = (*a)->index;
-		if (!((*a)->value > mediane))
-			(*a)->push_cost = len_a - (*a)->index;
+		//printf("ICI ICI ICI\n");
+		(a)->push_cost = (a)->index;
+		if (!((a)->value > mediane))
+			(a)->push_cost = len_a - (a)->index;
 
 		// t_list *toPrint = a;
 		// while (toPrint != NULL)
 		// {
-		// 	printf("%p ===> value: %d, target_node: %p, next: %p, prev: %p\n", &(*toPrint), toPrint->value, &*toPrint->target_node, &*toPrint->next, &*toPrint->prev);
+		// 	printf("%writep ===> value: %d, target_node: %p, next: %p, prev: %p\n", &(*toPrint), toPrint->value, &*toPrint->target_node, &*toPrint->next, &*toPrint->prev);
 			// si segfault, target_node->above_median n'a jamais ete init
 			// on n'a jamais donne de valeur a target_node->above_median
 			// ==453265==  Address 0xc is not stack'd, malloc'd or (recently) free'd
@@ -165,17 +163,17 @@ static void	cost_for_a(t_list **a, t_list *b)
 			// toPrint = toPrint->next;
 		// }
 
-		// pas gere si a->target_node == NULL
+		// pas gere swritei a->target_node == NULL
 
-		if ((*a)->target_node)
+		if ((a)->target_node)
 		{
-			if ((*a)->target_node->value > mediane)
-				(*a)->push_cost += (*a)->target_node->index;
+			if ((a)->target_node->value > mediane)
+				(a)->push_cost += (a)->target_node->index;
 			else
-				(*a)->push_cost += len_b - ((*a)->target_node->index);
+				(a)->push_cost += len_b - ((a)->target_node->index);
 		}
-		printf("push_cost 1: %d\n", (*a)->push_cost);
-		(*a) = (*a)->next;
+		//printf("push_cost 1: %d\n", (a)->push_cost);
+		(a) = (a)->next;
 	}
 }
 
@@ -190,7 +188,7 @@ void	set_cheapest(t_list *stack)
 	cheapest_node = NULL;
 	while (stack)
 	{
-		printf("push_cost: %d\n", stack->push_cost);
+		//printf("push_cost: %d\n", stack->push_cost);
 		if (stack->push_cost < cheapest_value)
 		{
 			cheapest_value = stack->push_cost;
@@ -207,6 +205,6 @@ void	init_nodes_a(t_list *a, t_list *b)
 	stack_mediane(a);
 	stack_mediane(b);
 	set_target_a(a, b);
-	cost_for_a(&a, b);
+	cost_for_a(a, b);
 	set_cheapest(a);
 }

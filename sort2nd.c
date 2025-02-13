@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:33:37 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/13 15:45:16 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:57:58 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    move_a_to_b(t_list **a, t_list **b)
         rev_rotate_both(a, b, cheapest_node);
     prep_for_push(a, cheapest_node, 'a');
     prep_for_push(b, cheapest_node->target_node, 'b');
-    pb(b, a); 
+    pb(a, b); 
 }
 
 void move_b_to_a(t_list **a, t_list **b)
@@ -41,9 +41,9 @@ void    sort_stacks(t_list **stack_a, t_list **stack_b)
 
     len_a = stack_len(*stack_a);
     if (len_a-- > 3 && !stack_already_sorted(*stack_a))
-        pb (stack_b, stack_a);
+        pb(stack_a, stack_b);
     if (len_a-- > 3 && !stack_already_sorted(*stack_a))
-        pb (stack_b, stack_a);
+        pb (stack_a, stack_b);
     while(len_a-- > 3 && !stack_already_sorted(*stack_a))
     {
         init_nodes_a(*stack_a, *stack_b);

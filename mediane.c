@@ -6,20 +6,34 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 16:12:36 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/13 15:44:49 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:27:28 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
+void stack_index(t_list *stack)
+{
+    int i;
+
+    i = 0;
+    while(stack)
+    {
+        stack->index = i;
+        i++;
+        stack = stack->next;
+    }
+}
+
 int stack_mediane(t_list *stack)
 {
     int mediane;
     int len;
-
+    
     mediane = 0;
     len = 0;
 
+    stack_index(stack);
     set_rank(&stack);
     if (stack)
     {
@@ -58,7 +72,8 @@ void set_rank(t_list **stack_a)
     t_list *stack_a_copy;
     t_list *start;
     int rank;
-
+    
+    stack_index(*stack_a);
     stack_a_copy = *stack_a;
     start = stack_a_copy;
     while(*stack_a)
@@ -66,8 +81,12 @@ void set_rank(t_list **stack_a)
         rank = 0;
         while(stack_a_copy)
         {
+            // printf("%d je print la value de (*stack_a)->value\n", (*stack_a)->value);
+            // printf("%d je print la value de stack_a_copy->value\n", stack_a_copy->value);
+            // printf("%d je print la value de (*stack_a)->index\n", (*stack_a)->index);
+            // printf("%d je print la value de stack_a_copy->index\n\n", stack_a_copy->index);
             if((*stack_a)->value > stack_a_copy->value &&
-             (*stack_a)->index != stack_a_copy->index)
+                (*stack_a)->index != stack_a_copy->index)
             {
                 rank++;
             }

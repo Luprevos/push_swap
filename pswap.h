@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 15:59:59 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/13 15:33:34 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:22:35 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void    free_errors(t_list **stack);
 
 //void	ft_index(t_list *stack_a);
 //void set_target_a(t_list *stack_a, t_list *stack_b);
-static void 	set_target_a(t_list *a, t_list *b);
-static void	cost_for_a(t_list **a, t_list *b);
+void 	set_target_a(t_list *a, t_list *b);
+void	cost_for_a(t_list *a, t_list *b);
 void	set_cheapest(t_list *stack);
 void	init_nodes_a(t_list *a, t_list *b);
 
@@ -93,6 +93,7 @@ t_list	*get_cheapest(t_list *stack);
 int stack_mediane(t_list *stack);
 void mediane_check(t_list **stack_a, t_list **stack_b);
 void set_rank(t_list **stack_a);
+void stack_index(t_list *stack);
 
 
 
