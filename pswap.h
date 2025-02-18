@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 15:59:59 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/13 16:22:35 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:26:31 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-#include <limits.h>
-#include <stdbool.h>
+# include <limits.h>
+# include <stdbool.h>
 
 typedef struct s_list
 {
 	int				value;
 	int				index;
-	int 			rank;
+	int				rank;
 	int				push_cost;
 	bool			cheapest;
 	struct s_list	*target_node;
@@ -46,25 +46,23 @@ void	rrb(t_list **stack_b, int n);
 
 void	rrr(t_list **stack_a, t_list **stack_b);
 
-long     ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 void	add_last(t_list	**stack, int n);
-int	ft_isdigit(int c);
-void	init_stack_a(t_list **stack_a , char **av);
+int		ft_isdigit(int c);
+void	init_stack_a(t_list **stack_a, char **av);
 
-int	syntax_error(char *str);
-int check_double(t_list *a, int n);
-void    free_stack(t_list **stack);
-void    free_errors(t_list **stack);
+int		syntax_error(char *str);
+int		check_double(t_list *a, int n);
+void	free_stack(t_list **stack);
+void	free_errors(t_list **stack);
 
-//void	ft_index(t_list *stack_a);
-//void set_target_a(t_list *stack_a, t_list *stack_b);
-void 	set_target_a(t_list *a, t_list *b);
+void	set_target_a(t_list *a, t_list *b);
 void	cost_for_a(t_list *a, t_list *b);
 void	set_cheapest(t_list *stack);
 void	init_nodes_a(t_list *a, t_list *b);
 
-void    set_target_b(t_list *a, t_list *b);
-void    init_nodes_b(t_list *a, t_list *b);
+void	set_target_b(t_list *a, t_list *b);
+void	init_nodes_b(t_list *a, t_list *b);
 
 t_list	*get_max(t_list *stack);
 t_list	*get_min(t_list *stack);
@@ -74,7 +72,7 @@ bool	stack_already_sorted(t_list *stack);
 
 void	rotate_both(t_list **stack_a, t_list **stack_b, t_list *min);
 void	sort_stack_2E(t_list **stack);
-void    sort_stack_3E(t_list **stack);
+void	sort_stack_3E(t_list **stack);
 void	rev_rotate_both(t_list **stack_a, t_list **stack_b, t_list *min);
 void	min_go_top(t_list **stack_a);
 
@@ -82,20 +80,17 @@ void	move_a_to_b(t_list **a, t_list **b);
 void	move_b_to_a(t_list **a, t_list **b);
 void	sort_stacks(t_list **a, t_list **b);
 
-int	count_words(char *s, char c);
+int		count_words(char *s, char c);
 char	*get_next_word(char *s, char c);
-char **ft_split(char *s, char c);
+char	**ft_split(char *s, char c);
 
 void	prep_for_push(t_list **stack, t_list *top, char stack_name);
 t_list	*get_cheapest(t_list *stack);
 
-
-int stack_mediane(t_list *stack);
-void mediane_check(t_list **stack_a, t_list **stack_b);
-void set_rank(t_list **stack_a);
-void stack_index(t_list *stack);
-
-
+int		stack_mediane(t_list *stack);
+void	mediane_check(t_list **stack_a, t_list **stack_b);
+void	set_rank(t_list **stack_a);
+void	stack_index(t_list *stack);
 
 int		is_empty(t_list *stack_a);
 void	print_list(t_list *stack_a);

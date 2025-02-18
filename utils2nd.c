@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:32:40 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/13 15:37:42 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:38:03 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	prep_for_push(t_list **stack, t_list *top, char stack_name)
 {
-	int mediane;
+	int	mediane;
 
 	mediane = stack_mediane(*stack);
 	while (*stack != top)
 	{
-		if(stack_name == 'a')
+		if (stack_name == 'a')
 		{
 			if (top->value > mediane)
 				ra(stack, 0);
@@ -40,9 +40,9 @@ t_list	*get_cheapest(t_list *stack)
 {
 	if (!stack)
 		return (NULL);
-	while(stack)
+	while (stack)
 	{
-		if(stack->cheapest)
+		if (stack->cheapest)
 		{
 			return (stack);
 		}
@@ -50,4 +50,3 @@ t_list	*get_cheapest(t_list *stack)
 	}
 	return (NULL);
 }
-
