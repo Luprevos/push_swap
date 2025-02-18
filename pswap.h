@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 15:59:59 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/18 17:26:31 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:05:00 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ t_list	*go_last(t_list **stack);
 bool	stack_already_sorted(t_list *stack);
 
 void	rotate_both(t_list **stack_a, t_list **stack_b, t_list *min);
-void	sort_stack_2E(t_list **stack);
-void	sort_stack_3E(t_list **stack);
+void	sort_stack_2e(t_list **stack);
+void	sort_stack_3e(t_list **stack);
 void	rev_rotate_both(t_list **stack_a, t_list **stack_b, t_list *min);
 void	min_go_top(t_list **stack_a);
 

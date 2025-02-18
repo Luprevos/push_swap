@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 14:37:41 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/18 16:53:07 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:27:59 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,7 @@ void	set_target_a(t_list *a, t_list *b)
 			current_b = current_b->next;
 		}
 		if (best_match_index == LONG_MIN)
-		{
-			if (b)
-				a->target_node = get_max(b);
-			else
-				a->target_node = NULL;
-		}
+			a->target_node = get_max(b);
 		else
 			a->target_node = target_node;
 		a = a->next;
@@ -56,11 +51,6 @@ void	cost_for_a(t_list *a, t_list *b)
 	len_b = stack_len(b);
 	while (a)
 	{
-		if (!(a)->target_node)
-		{
-			a = (a)->next;
-			continue ;
-		}
 		(a)->push_cost = (a)->index;
 		if (!((a)->value > mediane))
 			(a)->push_cost = len_a - (a)->index;

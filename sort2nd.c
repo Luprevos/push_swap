@@ -6,7 +6,7 @@
 /*   By: luprevos <luprevos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 17:33:37 by luprevos          #+#    #+#             */
-/*   Updated: 2025/02/18 17:33:54 by luprevos         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:05:19 by luprevos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	sort_stacks(t_list **stack_a, t_list **stack_b)
 		init_nodes_a(*stack_a, *stack_b);
 		move_a_to_b(stack_a, stack_b);
 	}
-	sort_stack_3E(stack_a);
+	sort_stack_3e(stack_a);
 	while (*stack_b)
 	{
 		init_nodes_b(*stack_a, *stack_b);
